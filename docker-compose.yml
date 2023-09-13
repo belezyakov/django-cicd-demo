@@ -5,7 +5,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    command:  gunicorn do-guide.wsgi:application --bind 0.0.0.0:8000
+    command:  gunicorn demo.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - static_volume:/home/app/web/staticfiles
 
