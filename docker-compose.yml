@@ -5,18 +5,18 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    command:  gunicorn do-guide.wsgi:application --bind 0.0.0.0:8000
+    command:  gunicorn demo.wsgi:application --bind 0.0.0.0:8000
     volumes:
-      - static_volume:/home/app/web/staticfiles
+      - static_volume:/home/app/demo/staticfiles
 
-    image: belezyakov/django-cicd-test:latest
+    image: belezyakov/django-cicd-demo:latest
     ports:
       - "8000:8000"
     networks:
-      - django-cicd-test
+      - django-cicd-demo
 
 volumes:
   static_volume:
 
 networks:
-  django-cicd-test:
+  django-cicd-demo:
