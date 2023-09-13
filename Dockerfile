@@ -1,4 +1,4 @@
-FROM python:3.10.1-slim-buster 
+FROM python:3.8.10-slim-buster 
 
 # WORKDIR 
 ENV APP_HOME=/app
@@ -22,7 +22,7 @@ RUN apt-get update \
     && apt-get install -y build-essential \
     && apt-get install -y libpq-dev \
     && apt-get install -y gettext \
-    && apt-get -y install netcat gcc postgresql \
+    && apt-get -y install netcat gcc \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
     && rm -rf /var/lib/apt/lists/*
 
