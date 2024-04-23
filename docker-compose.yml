@@ -5,22 +5,9 @@ services:
     build: 
       context: ./django
       dockerfile: Dockerfile
-    command:  gunicorn do-guide.wsgi:application --bind 0.0.0.0:8000
+    command:  python3 demo/manage.py runserver
     volumes:
       - ./data/static:/home/app/web/staticfiles
+    network_mode: "host"
     expose:
       - 8000
-    networks:
-      - django-cicd-test
-
-  nginx:
-    build: ./nginx
-    volumes:
-      - ./data/static:/home/app/web/staticfiles
-    ports:
-      - 80:80
-    depends_on:
-      - web
-
-networks:
-  django-cicd-test:
