@@ -3,20 +3,11 @@ version: '3.8'
 services:
   web:
     build: 
-      context: .
+      context: ./django
       dockerfile: Dockerfile
-    command:  gunicorn do-guide.wsgi:application --bind 0.0.0.0:8000
+    command:  python3 demo/manage.py runserver
     volumes:
-      - static_volume:/home/app/web/staticfiles
-
-    image: belezyakov/django-cicd-test:latest
-    ports:
-      - "8000:8000"
-    networks:
-      - django-cicd-test
-
-volumes:
-  static_volume:
-
-networks:
-  django-cicd-test:
+      - ./data/static:/home/app/web/staticfiles
+    network_mode: "host"
+    expose:
+      - 8000
