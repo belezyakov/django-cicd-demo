@@ -25,7 +25,7 @@ jobs:
           cat >>~/.ssh/config <<END
           Host target
             HostName $SSH_HOST
-            User $SSH_KEY
+            User $SSH_USER
             IdentityFile ~/.ssh/github
             LogLevel ERROR
             StrictHostKeyChecking no
